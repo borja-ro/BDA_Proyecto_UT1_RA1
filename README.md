@@ -12,7 +12,21 @@ Trabajo práctico de **Sistemas de Big Data**. Pipeline mínimo que:
 ## 🗂️ Estructura del repositorio
 
 ```
-project/
+proyecto sin ejecutar (master_notebook.ipynb crea la estructura completa):
+
+proyecto/
+├─ environment.yaml              # emulación del entorno
+├─ master_notebook.ipynb         # notebook principal. genera , ingesta, limpia, exporta
+├─ README.md                     # portada del repositorio con instrucciones
+├─ reporte_CO2_pipeline.md       # contiene el reporte final en markdown con explicación detallada del proces, kpis y conclusiones
+
+```
+## El mismo notebook crea la estructura si no existe previamente
+---
+```
+una vez ejecutado todo el notebook:
+
+proyecto/
 ├─ data/
 │  └─ drops/                  # Aquí se genera/lee lecturas.log (NDJSON)
 ├─ docs/                      # Documentación (ingesta, calidad, modelado, lecciones)
@@ -29,8 +43,6 @@ project/
 └─ README.md
 ```
 
-> ⚠️ El notebook crea la estructura automáticamente si no existe.
-
 ---
 
 ## ✅ Requisitos
@@ -44,15 +56,18 @@ project/
 ## 🧪 Preparación del entorno (Conda + VS Code/Jupyter)
 
 ```bash
-# 1) Crear y activar entorno
-conda create -n ut1_co2 python=3.11 -y
+
+# Crear entorno desde el archivo YAML
+conda env create -f environment.yml
+
+# Activarlo
 conda activate ut1_co2
 
-# 2) Instalar dependencias del proyecto
-pip install -r requirements.txt
-
-# 3) (Opcional) Registrar kernel para Jupyter/VS Code
+# (Opcional pero recomendado para comodidad) registrar kernel para Jupyter
 python -m ipykernel install --user --name ut1_co2 --display-name "Python (ut1_co2)"
+
+# También opcional, si quieres añadir paquetes más tarde y que se refleje 
+conda env export --no-builds > environment.yml
 ```
 
 En **VS Code**: Selecciona el kernel **Python (ut1_co2)** en la barra superior del notebook.
@@ -79,7 +94,7 @@ Abre `project/notebooks/master_notebook.ipynb` y ejecuta, en orden:
 
 ---
 
-## 🧾 Reporte (`output/reporte.md`)
+## 🧾 Reporte (`output/reporte_CO2_pipeline.md`)
 
 Estructura sugerida (adaptada a CO₂):  
 - **Titular** (ppm media, nº alertas)  
@@ -90,21 +105,16 @@ Estructura sugerida (adaptada a CO₂):
 - **Persistencia** (rutas Parquet/SQLite)  
 - **Conclusiones** (ventilación/horarios/sensores a revisar)
 
-> Si deseas que el reporte se **genere automáticamente**: deja activa la celda final del notebook que lo escribe.
 
 ---
 
 ## 🧰 Comandos útiles
 
 ```bash
-# Ver remotos y rama actual (antes de hacer push)
+
 git status
 git remote -v
 
-# (Opcional) cambiar remoto al repo personal
-git remote set-url origin git@github.com:b0rjen/BDA_Proyecto_UT1_RA1.git
-
-# Añadir/commit/push
 git add .
 git commit -m "UT1 CO2: simulacion, ingesta, limpieza, parquet y reporte"
 git push origin main
@@ -142,4 +152,4 @@ with sqlite3.connect("project/output/ut1.db") as con:
 
 Trabajo académico de la asignatura **Sistemas de Big Data**.  
 Datos simulados con fines docentes.  
-Autor: **Borja Ramos (b0rjen)** · 2025.
+Autor: **Borja Ramos** · 2025.
