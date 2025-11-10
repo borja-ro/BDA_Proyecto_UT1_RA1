@@ -1,0 +1,17 @@
+name: ut1_co2
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.11
+  - pandas
+  - numpy
+  - pyarrow
+  - jupyterlab
+  - ipykernel
+  - sqlite
+  - pip
+  - pip:
+      - matplotlib
+      - notebook
+      - openpyxl
