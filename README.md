@@ -143,13 +143,12 @@ with sqlite3.connect("project/output/ut1.db") as con:
 
 - **Permisos al crear carpetas** dentro de Google Drive/Cloud: mueve el proyecto a una ruta local (p. ej. `~/Proyectos/UT1_CO2/`) y vuelve a ejecutar la celda de creación de rutas.  
 - **“database is locked”**: asegúrate de cerrar conexiones (`with sqlite3.connect(...)`) o usa el modo WAL (ya activado en `upsert_raw`).  
-- **No se ve Mermaid en `reporte.md` en VS Code**: instala **Markdown Preview Mermaid Support** y encierra el diagrama en bloque ```mermaid.
-```
+- **No se ve Mermaid en `reporte.md` en VS Code**: instala **Markdown Preview Mermaid Support** y encierra el diagrama en bloque 'mermaid'
 
 ---
 
-## 📄 Licencia / Autoría
+## 📄 Autoría
 
 Trabajo académico de la asignatura **Sistemas de Big Data**.  
 Datos simulados con fines docentes.  
-Autor: **Borja Ramos** · 2025.
+Autor: **Borja Ramos** · diciembre 2025.
